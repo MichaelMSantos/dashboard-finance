@@ -5,50 +5,51 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
+    provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
 }
 
 model Transaction {
-  id            String                    @id @default(uuid())
-  name          String
-  type          TransactionType
-  amount        Decimal                   @db.Decimal(10, 2)
-  category      TransactionCategory
-  paymentMethod TransactionpPaymentMethod
-  date          DateTime
-  created       DateTime                  @default(now())
-  updatedAt     DateTime                  @updatedAt
+    id            String                    @id @default(uuid())
+    name          String
+    type          TransactionType
+    amount        Decimal                   @db.Decimal(10, 2)
+    category      TransactionCategory
+    paymentMethod TransactionpPaymentMethod
+    date          DateTime
+    created       DateTime                  @default(now())
+    updatedAt     DateTime                  @updatedAt
+    userId        String
 }
 
 enum TransactionType {
-  DEPOSIT
-  EXPENSE
-  INVESTMENT
+    DEPOSIT
+    EXPENSE
+    INVESTMENT
 }
 
 enum TransactionCategory {
-  HOUSING
-  TRANSPORTATION
-  FOOD
-  ENTERTAINMENT
-  HEALTH
-  UTILITY
-  SALARY
-  EDUCATION
-  OTHER
+    HOUSING
+    TRANSPORTATION
+    FOOD
+    ENTERTAINMENT
+    HEALTH
+    UTILITY
+    SALARY
+    EDUCATION
+    OTHER
 }
 
 enum TransactionpPaymentMethod {
-  CREDIT_CARD
-  DEBIT_CARD
-  BANK_TRANSFER
-  BANK_SLIP
-  CASH
-  PIX
-  OTHER
+    CREDIT_CARD
+    DEBIT_CARD
+    BANK_TRANSFER
+    BANK_SLIP
+    CASH
+    PIX
+    OTHER
 }
