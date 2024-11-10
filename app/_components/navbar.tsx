@@ -21,7 +21,7 @@ const Navbar = () => {
           Dashboard
         </Link>
         <Link
-          href="/transaction"
+          href="/transactions"
           className={
             pathname === "/transactions"
               ? "text-primary font-bold"
