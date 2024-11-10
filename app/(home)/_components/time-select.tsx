@@ -10,6 +10,7 @@ import {
 import { useRouter, useSearchParams } from "next/navigation";
 
 const MONTH_OPTIONS = [
+  { value: "all", label: "Todos" },
   { value: "01", label: "January" },
   { value: "02", label: "February" },
   { value: "03", label: "March" },
@@ -37,7 +38,7 @@ const TimeSelect = () => {
   return (
     <Select
       onValueChange={(value) => handleMonthChange(value)}
-      defaultValue={month ?? ""}
+      defaultValue={month ?? "all"}
     >
       <SelectTrigger className="w-[150px] rounded-full">
         <SelectValue placeholder="Mês" />
