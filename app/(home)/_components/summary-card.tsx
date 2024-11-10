@@ -17,7 +17,7 @@ const SummaryCard = ({
   return (
     <Card className={`${size === "large" ? "bg-white bg-opacity-5" : ""}`}>
       <CardHeader className="flex-row w-full items-center gap-2">
-        {icon}
+        <div className="bg-white bg-opacity-[3%] p-2 rounded-lg">{icon}</div>
         <p
           className={`${size === "small" ? "text-muted-foreground" : "text-white opacity-70"}`}
         >
