@@ -17,7 +17,7 @@ export const getDashboard = async (month: string) => {
             lt: new Date(`2024-${month}-31`),
           },
         }
-      : {};
+      : { userId };
 
   const depositsTotal = Number(
     (
