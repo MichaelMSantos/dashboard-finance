@@ -21,13 +21,13 @@ const TransactionsPage = async () => {
   return (
     <>
       <Navbar />
-      <div className="p-6 space-y-6 h-full overflow-hidden">
+      <div className="p-6 space-y-6 overflow-hidden">
         <div className="flex w-full justify-between items-center">
           <h1 className="text2xl font-bold">Transações</h1>
 
           <AddTransactionButton />
         </div>
-        <ScrollArea>
+        <ScrollArea className="h-full">
           <DataTable columns={transactionColumns} data={transactions} />
         </ScrollArea>
       </div>
