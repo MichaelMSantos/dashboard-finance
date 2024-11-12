@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "react-day-picker";
+import { Button } from "@/app/_components/ui/button";
 import { createStripeCheckout } from "../_actions/create-stripe-checkout";
 import { loadStripe } from "@stripe/stripe-js";
 
