@@ -40,6 +40,7 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { upsertTransaction } from "../_actions/add-transaction";
+import { toast } from "sonner";
 
 interface UpsertTransactionDialogProps {
   isOpen: boolean;
@@ -88,10 +89,12 @@ const UpsertTransactionDialog = ({
   const onSubmit = async (data: FormSchema) => {
     try {
       await upsertTransaction({ ...data, id: transactionId });
+      toast.success("Transação salva com sucesso!");
       setIsOpen(false);
       form.reset(defaultValues);
     } catch (error) {
       console.error("Erro ao enviar transação:", error);
+      toast.error("Falha ao salvar a transação.");
     }
   };
 
