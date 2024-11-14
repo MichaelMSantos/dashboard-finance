@@ -6,20 +6,22 @@ import {
 } from "lucide-react";
 import SummaryCard from "./summary-card";
 
-interface SummaryCard {
+interface SummaryCards {
   month: string;
   balance: number;
   depositsTotal: number;
   investmentsTotal: number;
   expensesTotal: number;
+  userCanAddTransaction?: boolean;
 }
 
 const SummaryCards = async ({
   balance,
   depositsTotal,
-  investmentsTotal,
   expensesTotal,
-}: SummaryCard) => {
+  investmentsTotal,
+  userCanAddTransaction,
+}: SummaryCards) => {
   return (
     <div className="space-y-6">
       <SummaryCard
@@ -27,22 +29,22 @@ const SummaryCards = async ({
         title="Saldo"
         amount={balance}
         size="large"
+        userCanAddTransaction={userCanAddTransaction}
       />
-
       <div className="grid grid-cols-3 gap-6">
         <SummaryCard
-          icon={<PiggyBankIcon size={14} />}
-          title={"Investido"}
+          icon={<PiggyBankIcon size={16} />}
+          title="Investido"
           amount={investmentsTotal}
         />
         <SummaryCard
-          icon={<TrendingUpIcon size={14} className="text-primary" />}
-          title={"Receitas"}
+          icon={<TrendingUpIcon size={16} className="text-primary" />}
+          title="Receita"
           amount={depositsTotal}
         />
         <SummaryCard
-          icon={<TrendingDownIcon size={14} className="text-red-500" />}
-          title={"Despesas"}
+          icon={<TrendingDownIcon size={16} className="text-red-500" />}
+          title="Despesas"
           amount={expensesTotal}
         />
       </div>

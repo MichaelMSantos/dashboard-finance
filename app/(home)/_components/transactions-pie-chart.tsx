@@ -13,14 +13,15 @@ import { TransactionType } from "@prisma/client";
 import { TransactionPercentagePerType } from "@/app/_data/get-dashboard/types";
 import { PiggyBankIcon, TrendingDownIcon, TrendingUpIcon } from "lucide-react";
 import PercentageItem from "./percentage-item";
+
 const chartConfig = {
   [TransactionType.INVESTMENT]: {
     label: "Investido",
-    color: "#FFFF",
+    color: "#FFFFFF",
   },
   [TransactionType.DEPOSIT]: {
     label: "Receita",
-    color: "#558b02",
+    color: "#55B02E",
   },
   [TransactionType.EXPENSE]: {
     label: "Despesas",
@@ -28,34 +29,34 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-interface TransactionPieChartProps {
+interface TransactionsPieChartProps {
   typesPercentage: TransactionPercentagePerType;
   depositsTotal: number;
   investmentsTotal: number;
   expensesTotal: number;
 }
 
-const TransactionPieChart = ({
+const TransactionsPieChart = ({
   depositsTotal,
   investmentsTotal,
   expensesTotal,
   typesPercentage,
-}: TransactionPieChartProps) => {
+}: TransactionsPieChartProps) => {
   const chartData = [
     {
       type: TransactionType.DEPOSIT,
       amount: depositsTotal,
-      fill: "#558b02",
-    },
-    {
-      type: TransactionType.INVESTMENT,
-      amount: investmentsTotal,
-      fill: "#FFFF",
+      fill: "#55B02E",
     },
     {
       type: TransactionType.EXPENSE,
       amount: expensesTotal,
       fill: "#E93030",
+    },
+    {
+      type: TransactionType.INVESTMENT,
+      amount: investmentsTotal,
+      fill: "#FFFFFF",
     },
   ];
   return (
@@ -78,7 +79,8 @@ const TransactionPieChart = ({
             />
           </PieChart>
         </ChartContainer>
-        <div className="space-y-2">
+
+        <div className="space-y-3">
           <PercentageItem
             icon={<TrendingUpIcon size={16} className="text-primary" />}
             title="Receita"
@@ -100,4 +102,4 @@ const TransactionPieChart = ({
   );
 };
 
-export default TransactionPieChart;
+export default TransactionsPieChart;
