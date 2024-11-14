@@ -7,11 +7,12 @@ import { TotalExpensePerCategory } from "@/app/_data/get-dashboard/types";
 interface ExpensesPerCategoryProps {
   expensesPerCategory: TotalExpensePerCategory[];
 }
+
 const ExpensesPerCategory = ({
   expensesPerCategory,
 }: ExpensesPerCategoryProps) => {
   return (
-    <ScrollArea className="col-span-2 rounded-md border pb-6 h-full">
+    <ScrollArea className="col-span-2 h-full rounded-md border pb-6">
       <CardHeader>
         <CardTitle className="font-bold">Gastos por Categoria</CardTitle>
       </CardHeader>
@@ -19,7 +20,7 @@ const ExpensesPerCategory = ({
       <CardContent className="space-y-6">
         {expensesPerCategory.map((category) => (
           <div key={category.category} className="space-y-2">
-            <div className="flex justify-between w-full">
+            <div className="flex w-full justify-between">
               <p className="text-sm font-bold">
                 {TRANSACTION_CATEGORY_LABELS[category.category]}
               </p>
