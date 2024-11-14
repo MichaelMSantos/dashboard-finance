@@ -21,14 +21,16 @@ const LastTransactions = ({ lastTransactions }: LastTransactionsProps) => {
     }
     return "text-white";
   };
+
   const getAmountPrefix = (transaction: Transaction) => {
     if (transaction.type === TransactionType.DEPOSIT) {
       return "+";
     }
     return "-";
   };
+
   return (
-    <ScrollArea className="rounded-md border">
+    <ScrollArea className="rounded-md border w-full max-h-[400px] overflow-y-auto">
       <CardHeader className="flex-row items-center justify-between">
         <CardTitle className="font-bold">Últimas Transações</CardTitle>
         <Button variant="outline" className="rounded-full font-bold" asChild>
@@ -39,7 +41,7 @@ const LastTransactions = ({ lastTransactions }: LastTransactionsProps) => {
         {lastTransactions.map((transaction) => (
           <div
             key={transaction.id}
-            className="flex items-center justify-between"
+            className="flex items-center justify-between w-full"
           >
             <div className="flex items-center gap-3">
               <div className="rounded-lg bg-white bg-opacity-[3%] p-3 text-white">
@@ -48,9 +50,10 @@ const LastTransactions = ({ lastTransactions }: LastTransactionsProps) => {
                   height={20}
                   width={20}
                   alt="PIX"
+                  className="w-6 h-6"
                 />
               </div>
-              <div>
+              <div className="flex flex-col">
                 <p className="text-sm font-bold">{transaction.name}</p>
                 <p className="text-sm text-muted-foreground">
                   {new Date(transaction.date).toLocaleDateString("pt-BR", {

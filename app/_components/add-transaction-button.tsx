@@ -26,12 +26,13 @@ const AddTransactionButton = ({
         <Tooltip>
           <TooltipTrigger asChild>
             <Button
-              className="rounded-full font-bold"
+              className="rounded-full font-bold text-sm sm:px-4 sm:py-2 sm:w-auto"
               onClick={() => setDialogIsOpen(true)}
               disabled={!userCanAddTransaction}
             >
-              Adicionar transação
-              <ArrowDownUpIcon />
+              {/* Texto oculto no mobile */}
+              <span className="hidden sm:block">Adicionar transação</span>
+              <ArrowDownUpIcon className="ml-2" />
             </Button>
           </TooltipTrigger>
           <TooltipContent>

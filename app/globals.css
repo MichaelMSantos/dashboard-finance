@@ -74,8 +74,10 @@ body {
   }
   html {
     @apply h-full;
+    @apply overflow-x-hidden
   }
   body {
     @apply h-full bg-background text-foreground;
+    @apply overflow-y-auto
   }
 }

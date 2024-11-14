@@ -33,10 +33,10 @@ const Home = async ({ searchParams: { month } }: HomeProps) => {
   return (
     <>
       <Navbar />
-      <div className="p-6 space-y-6 flex flex-col overflow-hidden">
-        <div className="flex justify-between">
+      <div className="p-6 space-y-6 flex flex-col ">
+        <div className="flex justify-between flex-col sm:flex-row ">
           <h1 className="text-2xl font-bold">Dashboard</h1>
-          <div className="flex items-center gap-3">
+          <div className="flex justify-end mt-4 sm:mt-0 sm:items-center gap-3 ">
             <AiReportButton
               month={month}
               hasPremiumPlan={
@@ -46,22 +46,23 @@ const Home = async ({ searchParams: { month } }: HomeProps) => {
             <TimeSelect />
           </div>
         </div>
-        <div className="grid h-full grid-cols-[2fr,1fr] gap-6 overflow-hidden">
+        <div className="grid grid-cols-1 lg:grid-cols-[2fr,1fr] gap-6 overflow-hidden">
           <div className="flex flex-col gap-6 overflow-hidden">
             <SummaryCards
               month={month}
               {...dashboard}
               userCanAddTransaction={userCanAddTransaction}
             />
-
-            <div className="grid grid-cols-3 grid-rows-1 gap-6 h-full overflow-hidden">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 h-full overflow-hidden">
               <TransactionPieChart {...dashboard} />
               <ExpensesPerCategory
                 expensesPerCategory={dashboard.TotalExpensePerCategory}
               />
             </div>
           </div>
-          <LastTransactions lastTransactions={dashboard.LastTransactions} />
+          <div className="overflow-auto flex-shrink-0 h-full">
+            <LastTransactions lastTransactions={dashboard.LastTransactions} />
+          </div>
         </div>
       </div>
     </>
