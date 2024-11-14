@@ -10,6 +10,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "./ui/tooltip";
+import { usePathname } from "next/navigation";
 
 interface AddTransactionButtonProps {
   userCanAddTransaction?: boolean;
@@ -19,6 +20,7 @@ const AddTransactionButton = ({
   userCanAddTransaction,
 }: AddTransactionButtonProps) => {
   const [dialogIsOpen, setDialogIsOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <>
@@ -30,8 +32,9 @@ const AddTransactionButton = ({
               onClick={() => setDialogIsOpen(true)}
               disabled={!userCanAddTransaction}
             >
-              {/* Texto oculto no mobile */}
-              <span className="hidden sm:block">Adicionar transação</span>
+              <span className={pathname == "/" ? "hidden sm:block" : ""}>
+                Adicionar transação
+              </span>
               <ArrowDownUpIcon className="ml-2" />
             </Button>
           </TooltipTrigger>

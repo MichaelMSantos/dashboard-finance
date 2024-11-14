@@ -7,13 +7,13 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // Estado para controle do menu
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
-    <nav className="flex justify-between px-8 py-4 border-b border-solid relative">
+    <nav className="flex justify-between items-center px-8 py-4 border-b border-solid relative">
       <div className="flex items-center gap-10">
         <Image src="/logo.svg" width={173} height={39} alt="Finance AI" />
 
@@ -50,6 +50,11 @@ const Navbar = () => {
         </div>
       </div>
 
+      {/* Exibe o UserButton em telas grandes */}
+      <div className="hidden md:block">
+        <UserButton showName />
+      </div>
+
       {/* Botão de menu hambúrguer para telas pequenas */}
       <div className="md:hidden flex items-center">
         <button onClick={toggleMenu} className="text-gray-300">
@@ -73,7 +78,7 @@ const Navbar = () => {
       {/* Overlay (fundo que bloqueia o conteúdo) */}
       {isMenuOpen && (
         <div
-          onClick={() => setIsMenuOpen(false)} // Fecha o menu ao clicar no overlay
+          onClick={() => setIsMenuOpen(false)}
           className="fixed inset-0 bg-black bg-opacity-50 z-20"
         ></div>
       )}
@@ -86,7 +91,7 @@ const Navbar = () => {
       >
         {/* Botão de fechar dentro do menu */}
         <button
-          onClick={() => setIsMenuOpen(false)} // Fecha o menu ao clicar no botão
+          onClick={() => setIsMenuOpen(false)}
           className="absolute top-4 right-4 text-gray-500 hover:text-gray-800"
         >
           <svg
@@ -111,7 +116,6 @@ const Navbar = () => {
             className={
               pathname === "/" ? "text-primary font-bold" : "text-gray-300"
             }
-            onClick={() => setIsMenuOpen(false)} // Fecha o menu ao clicar no link
           >
             Dashboard
           </Link>
@@ -122,7 +126,6 @@ const Navbar = () => {
                 ? "text-primary font-bold"
                 : "text-gray-300"
             }
-            onClick={() => setIsMenuOpen(false)} // Fecha o menu ao clicar no link
           >
             Transações
           </Link>
@@ -133,19 +136,17 @@ const Navbar = () => {
                 ? "text-primary font-bold"
                 : "text-gray-300"
             }
-            onClick={() => setIsMenuOpen(false)} // Fecha o menu ao clicar no link
           >
             Assinatura
           </Link>
         </div>
 
-        {/* Seção do perfil no fundo do menu */}
+        {/* UserButton para o menu mobile */}
         <div className="flex justify-center px-4 py-2">
           <UserButton showName />
         </div>
       </div>
 
-      {/* Conteúdo bloqueado com desfoque */}
       {isMenuOpen && (
         <div className="md:hidden fixed inset-0 bg-black bg-opacity-50 z-10 backdrop-blur-sm"></div>
       )}
